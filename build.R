@@ -6,14 +6,14 @@ local({
   # see if we need to use the Jekyll render in knitr
   if (markdown == 'kramdown') {
     knitr::render_jekyll()
-  } else knitr::render_markdown()
+  } else knitr::render_markdown(strict = F)
   
   # input/output filenames are passed as two additional arguments to Rscript
   a = commandArgs(TRUE)
   d = gsub('^_|[.][a-zA-Z]+$', '', a[1])
   knitr::opts_chunk$set(
-    fig.path   = sprintf('figure/%s/', d),
-    cache.path = sprintf('cache/%s/', d)
+    fig.path   = sprintf('docs/figure/%s/', d),
+    cache.path = sprintf('docs/cache/%s/', d)
   )
   
   knitr::opts_knit$set(width = 70)
