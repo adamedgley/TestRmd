@@ -6,11 +6,12 @@ branches:
   only: master
 
 script:
-  - Rscript -e 'servr:::knit_maybe(c(".", "src"), c(".", "."), "build.R", "jekyll")'
+  - Rscript -e 'servr:::knit_maybe(c(".", "src"), c(".", "docs"), "build.R", "jekyll")'
 
 deploy:
   provider: pages
   skip_cleanup: true
+  local-dir: docs
   github_token: $GITHUB_TOKEN
   on:
     branch: master
